@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.less'
+import Head from 'next/head';
+import styles from '../styles/Home.module.less';
 
 export default function Home() {
     return (
