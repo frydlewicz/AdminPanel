@@ -2,7 +2,7 @@ import React from 'react';
 
 declare const Chart;
 
-function genConfig({ title, xAxeLabel, yAxeLabel, color }: Props) {
+function genConfig({ title, xAxeLabel, yAxeLabel, color }: IProps) {
     return {
         type: 'line',
         data: {
@@ -48,14 +48,14 @@ function genConfig({ title, xAxeLabel, yAxeLabel, color }: Props) {
     };
 }
 
-interface Props {
+interface IProps {
     title: string;
     xAxeLabel: string;
     yAxeLabel: string;
     color: Color;
 }
 
-export interface Point {
+export interface IPoint {
     x: string;
     y: number;
 }
@@ -69,16 +69,16 @@ export enum Color {
     BROWN = '#8D6E63',
 }
 
-export default class Graph extends React.Component<Props> {
+export default class Graph extends React.Component<IProps> {
     private readonly config;
 
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
     private chart: typeof Chart;
     private ready: boolean = false;
-    private points: Point[] = null;
+    private points: IPoint[] = null;
 
-    constructor(props: Props) {
+    constructor(props: IProps) {
         super(props);
 
         this.config = genConfig(props);
@@ -115,13 +115,13 @@ export default class Graph extends React.Component<Props> {
         }
     }
 
-    public update(points: Point[]): void {
+    public update(points: IPoint[]): void {
         if (!this.ready) {
             this.points = points;
             return;
         }
-        const xValues = points.map((point: Point): string => point.x);
-        const yValues = points.map((point: Point): number => point.y);
+        const xValues = points.map((point: IPoint): string => point.x);
+        const yValues = points.map((point: IPoint): number => point.y);
 
         this.config.data.labels = xValues;
         this.config.data.datasets[0].data = yValues;

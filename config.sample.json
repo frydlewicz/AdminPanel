@@ -1,0 +1,24 @@
+{
+    "metrics": [
+        {
+            "name": "cpu_usage",
+            "title": "CPU usage",
+            "yAxeLabel": "%"
+        },
+        {
+            "name": "cpu_load",
+            "title": "CPU load",
+            "yAxeLabel": ""
+        },
+        {
+            "name": "temperature",
+            "title": "Temperature",
+            "yAxeLabel": "°C"
+        },
+        {
+            "name": "memory",
+            "title": "Memory",
+            "yAxeLabel": "%"
+        }
+    ]
+}
