@@ -3,7 +3,9 @@ import Head from 'next/head';
 
 import { metrics } from '../config.json';
 import { IColector, getData } from '../services/redis';
-import Graph, { Color } from '../components/graph';
+import Graph, { Type, Color } from '../components/graph';
+
+import styles from '../styles/metrics.less';
 
 export interface IMetric {
     name: string;
@@ -41,16 +43,20 @@ export default class Metrics extends React.Component {
                 <Head>
                     <title>ADMIN | Metrics</title>
                 </Head>
-                <main>
+                <main className={styles.main}>
                     {metrics.map((metric: IMetric, i: number) => (
-                        <Graph
+                        <div
                             key={i}
-                            ref={(node: Graph) => this.graphs[metric.name] = node}
-                            title={metric.title}
-                            xAxeLabel=""
-                            yAxeLabel={metric.yAxeLabel}
-                            color={Color[Object.keys(Color)[i]]}
-                        ></Graph>
+                            className={styles.graph}
+                        >
+                            <Graph
+                                ref={(node: Graph) => this.graphs[metric.name] = node}
+                                type={Type.LINE}
+                                title={metric.title}
+                                yAxeLabel={metric.yAxeLabel}
+                                color={Color[Object.keys(Color)[i]]}
+                            ></Graph>
+                        </div>
                     ))}
                 </main>
             </React.Fragment>

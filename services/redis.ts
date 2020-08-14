@@ -13,11 +13,14 @@ export function getData(): IColector<IPoint[]> {
         result[metric.name] = [];
 
         [
+            '11:40',
             '11:50',
             '12:00',
             '12:10',
             '12:20',
-            '12:30'
+            '12:30',
+            '12:40',
+            '12:50'
         ].forEach((x: string): void => {
             result[metric.name].push({
                 x,

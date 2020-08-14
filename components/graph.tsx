@@ -2,9 +2,9 @@ import React from 'react';
 
 declare const Chart;
 
-function genConfig({ title, xAxeLabel, yAxeLabel, color }: IProps) {
+function genConfig({ type, title, yAxeLabel, color }: IProps) {
     return {
-        type: 'line',
+        type,
         data: {
             labels: [],
             datasets: [{
@@ -12,7 +12,7 @@ function genConfig({ title, xAxeLabel, yAxeLabel, color }: IProps) {
                 borderColor: color,
                 data: [],
                 fill: false,
-                pointRadius: 8,
+                pointRadius: 5,
             }],
         },
         options: {
@@ -32,8 +32,7 @@ function genConfig({ title, xAxeLabel, yAxeLabel, color }: IProps) {
                 xAxes: [{
                     display: true,
                     scaleLabel: {
-                        display: true,
-                        labelString: xAxeLabel,
+                        display: false,
                     }
                 }],
                 yAxes: [{
@@ -49,8 +48,8 @@ function genConfig({ title, xAxeLabel, yAxeLabel, color }: IProps) {
 }
 
 interface IProps {
+    type: Type,
     title: string;
-    xAxeLabel: string;
     yAxeLabel: string;
     color: Color;
 }
@@ -60,8 +59,13 @@ export interface IPoint {
     y: number;
 }
 
+export enum Type {
+    LINE = 'line',
+    BAR = 'bar',
+}
+
 export enum Color {
-    RED = '#F44336',
+    RED = '#EF5350',
     BLUE = '#03A9F4',
     GREEN = '#4CAF50',
     ORANGE = '#FFA000',
