@@ -34,3 +34,7 @@ yarn-error.log*
 
 # config
 config.json
+
+# typescript
+*.js
+*.jsx

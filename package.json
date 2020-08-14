@@ -9,9 +9,11 @@
     },
     "scripts": {
         "check": "tslint --fix -c tslint.json -p .",
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start"
+        "dev": "npx next dev",
+        "build": "npx next build",
+        "panel": "npx next start",
+        "tsc": "tsc",
+        "server": "node server.js"
     },
     "dependencies": {
         "@zeit/next-less": "^1.0.1",
