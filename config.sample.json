@@ -1,5 +1,5 @@
 {
-    "metrics": [
+    "statsKinds": [
         {
             "name": "cpu_usage",
             "title": "CPU usage",

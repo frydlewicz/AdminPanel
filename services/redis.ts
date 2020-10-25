@@ -1,11 +1,11 @@
-import { metrics } from '../config.json';
-import { IPoint, ICollector, IMetric } from '../helpers/types';
+import { IStatsKind, IStats } from '../helpers/types';
+import { statsKinds } from '../config.json';
 
-export function getMetrics(): ICollector<IPoint[]> {
-    const result: ICollector<IPoint[]> = {};
+export function getStats(): IStats {
+    const result: IStats = {};
 
-    metrics.forEach((metric: IMetric): void => {
-        result[metric.name] = [];
+    statsKinds.forEach((statsKind: IStatsKind): void => {
+        result[statsKind.name] = [];
 
         [
             '11:40',
@@ -17,7 +17,7 @@ export function getMetrics(): ICollector<IPoint[]> {
             '12:40',
             '12:50'
         ].forEach((x: string): void => {
-            result[metric.name].push({
+            result[statsKind.name].push({
                 x,
                 y: Math.random(),
             });

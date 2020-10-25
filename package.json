@@ -10,9 +10,8 @@
     "scripts": {
         "check": "tslint --fix -c tslint.json -p .",
         "dev": "npx next dev",
-        "build": "npx next build",
+        "build": "tsc && npx next build",
         "panel": "npx next start",
-        "tsc": "tsc",
         "server": "node server.js"
     },
     "dependencies": {

@@ -3,12 +3,14 @@ export interface IPoint {
     y: number;
 }
 
-export interface ICollector<T> {
+export interface ICollection<T> {
     [key: string]: T;
 }
 
-export interface IMetric {
+export interface IStatsKind {
     name: string;
     title: string;
     yAxeLabel: string;
 }
+
+export type IStats = ICollection<IPoint[]>;

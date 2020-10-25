@@ -1,15 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { metrics } from '../config.json';
-import { ICollector, IMetric } from '../helpers/types';
+import { ICollection, IStatsKind, IStats } from '../helpers/types';
+import { statsKinds } from '../config.json';
 import Graph, { Type, Color } from '../components/graph';
 
-import styles from '../styles/metrics.less';
+import styles from '../styles/stats.less';
 
-export default class Metrics extends React.Component {
-    private readonly graphs: ICollector<Graph> = {};
-
+export default class Stats extends React.Component {
+    private readonly graphs: ICollection<Graph> = {};
     private interval: NodeJS.Timeout;
 
     public componentDidMount(): void {
@@ -24,15 +23,15 @@ export default class Metrics extends React.Component {
     }
 
     private update(): void {
-        fetch('/api/metrics')
-            .then((res: Response): Promise<any> => {
+        fetch('/api/stats')
+            .then((res: Response): Promise<IStats> => {
                 if (!res.ok) {
-                    throw new Error('Unable to get metrics!');
+                    throw new Error('Unable to get statistics from API!');
                 }
                 return res.json();
-            }).then((metrics: any): void => {
-                for (const key of Object.keys(metrics)) {
-                    this.graphs[key].update(metrics[key]);
+            }).then((stats: IStats): void => {
+                for (const key of Object.keys(stats)) {
+                    this.graphs[key].update(stats[key]);
                 }
             }).catch((err: Error): void => console.error(err));
     }
@@ -41,19 +40,19 @@ export default class Metrics extends React.Component {
         return (
             <React.Fragment>
                 <Head>
-                    <title>ADMIN | Metrics</title>
+                    <title>ADMIN | Statistics</title>
                 </Head>
                 <main className={styles.main}>
-                    {metrics.map((metric: IMetric, i: number) => (
+                    {statsKinds.map((statsKind: IStatsKind, i: number) => (
                         <div
                             key={i}
                             className={styles.graph}
                         >
                             <Graph
-                                ref={(node: Graph) => this.graphs[metric.name] = node}
+                                ref={(node: Graph) => this.graphs[statsKind.name] = node}
                                 type={Type.LINE}
-                                title={metric.title}
-                                yAxeLabel={metric.yAxeLabel}
+                                title={statsKind.title}
+                                yAxeLabel={statsKind.yAxeLabel}
                                 color={Color[Object.keys(Color)[i]]}
                             ></Graph>
                         </div>
