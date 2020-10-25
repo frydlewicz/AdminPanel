@@ -15,11 +15,10 @@
         "removeComments": true,
         "allowJs": true,
         "skipLibCheck": true,
-        "strict": false,
-        "noEmit": false
+        "noEmit": false,
+        "strict": false
     },
     "include": [
-        "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx"
     ],
