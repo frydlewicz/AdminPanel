@@ -1,11 +1,10 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "module": "esnext",
+        "module": "commonjs",
         "lib": [
             "dom",
-            "dom.iterable",
-            "esnext"
+            "dom.iterable"
         ],
         "moduleResolution": "node",
         "jsx": "preserve",
