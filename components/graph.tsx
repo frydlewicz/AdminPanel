@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { IPoint } from '../helpers/types';
+
 declare const Chart;
 
 function genConfig({ type, title, yAxeLabel, color }: IProps) {
@@ -52,11 +54,6 @@ interface IProps {
     title: string;
     yAxeLabel: string;
     color: Color;
-}
-
-export interface IPoint {
-    x: string;
-    y: number;
 }
 
 export enum Type {

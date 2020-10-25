@@ -2,19 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 
 import { metrics } from '../config.json';
-import { IColector, getData } from '../services/redis';
+import { ICollector, IMetric } from '../helpers/types';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/metrics.less';
 
-export interface IMetric {
-    name: string;
-    title: string;
-    yAxeLabel: string;
-}
-
 export default class Metrics extends React.Component {
-    private readonly graphs: IColector<Graph> = {};
+    private readonly graphs: ICollector<Graph> = {};
 
     private interval: NodeJS.Timeout;
 
@@ -30,11 +24,17 @@ export default class Metrics extends React.Component {
     }
 
     private update(): void {
-        const data = getData();
-
-        for (const key of Object.keys(data)) {
-            this.graphs[key].update(data[key]);
-        }
+        fetch('/api/metrics')
+            .then((res: Response): Promise<any> => {
+                if (!res.ok) {
+                    throw new Error('Unable to get metrics!');
+                }
+                return res.json();
+            }).then((metrics: any): void => {
+                for (const key of Object.keys(metrics)) {
+                    this.graphs[key].update(metrics[key]);
+                }
+            }).catch((err: Error): void => console.error(err));
     }
 
     public render(): React.ReactNode {

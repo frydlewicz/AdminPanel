@@ -1,13 +1,8 @@
 import { metrics } from '../config.json';
-import { IMetric } from '../pages/metrics';
-import { IPoint } from '../components/graph';
+import { IPoint, ICollector, IMetric } from '../helpers/types';
 
-export interface IColector<T> {
-    [key: string]: T;
-}
-
-export function getData(): IColector<IPoint[]> {
-    const result: IColector<IPoint[]> = {};
+export function getMetrics(): ICollector<IPoint[]> {
+    const result: ICollector<IPoint[]> = {};
 
     metrics.forEach((metric: IMetric): void => {
         result[metric.name] = [];
