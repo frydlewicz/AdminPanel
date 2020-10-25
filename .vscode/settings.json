@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/*.jsx": true,
+        "*.js": true,
+        "services/*.js": true
+    }
+}
