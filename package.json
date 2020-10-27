@@ -22,7 +22,7 @@
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "redis": "^3.0.2",
-        "systeminformation": "^4.26.10",
+        "systeminformation": "^4.27.11",
         "tls": "0.0.1"
     },
     "devDependencies": {
