@@ -1,10 +1,14 @@
-export interface IPoint {
-    x: string;
-    y: number;
+export interface IObject {
+    [key: string]: any;
 }
 
 export interface ICollection<T> {
     [key: string]: T;
+}
+
+export interface IPoint {
+    x: string;
+    y: number;
 }
 
 export interface IStatsKind {
@@ -14,3 +18,6 @@ export interface IStatsKind {
 }
 
 export type IStats = ICollection<IPoint[]>;
+
+export type Resolver<T> = (data: T) => void;
+export type Rejecter = (err: Error) => void;

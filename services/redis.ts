@@ -1,28 +1,31 @@
-import { IStatsKind, IStats } from '../helpers/types';
-import { statsKinds } from '../config.json';
+import redis from 'redis';
 
-export function getStats(): IStats {
-    const result: IStats = {};
+import { IObject, Resolver, Rejecter } from '../helpers/types';
 
-    statsKinds.forEach((statsKind: IStatsKind): void => {
-        result[statsKind.name] = [];
+const client = redis.createClient();
 
-        [
-            '11:40',
-            '11:50',
-            '12:00',
-            '12:10',
-            '12:20',
-            '12:30',
-            '12:40',
-            '12:50'
-        ].forEach((x: string): void => {
-            result[statsKind.name].push({
-                x,
-                y: Math.random(),
-            });
+export function getData(key: string): Promise<IObject> {
+    return new Promise((res: Resolver<IObject>, rej: Rejecter): void => {
+        client.get(key, (err: Error, val: string): void => {
+            if (err) {
+                return rej(err);
+            }
+
+            try {
+                res(JSON.parse(val));
+            } catch (err) {
+                rej(err);
+            }
         });
     });
-
-    return result;
 }
+
+export function setData(key: string, data: IObject): void {
+    if (data) {
+        client.set(key, JSON.stringify(data));
+    }
+}
+
+client.on('error', (err: Error): void => {
+    console.error('Redis client unexpected error!', err);
+});
