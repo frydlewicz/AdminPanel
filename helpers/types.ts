@@ -17,6 +17,8 @@ export interface IStatsKind {
     name: string;
     title: string;
     yAxeLabel: string;
+    suggestedMin: number;
+    suggestedMax: number;
 }
 
 export type IStatsQueues = ICollection<Queue<IPoint>>;

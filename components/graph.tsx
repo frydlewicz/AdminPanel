@@ -4,7 +4,7 @@ import { IPoint } from '../helpers/types';
 
 declare const Chart;
 
-function genConfig({ type, title, yAxeLabel, color }: IProps) {
+function genConfig({ type, title, yAxeLabel, suggestedMin, suggestedMax, color }: IProps) {
     return {
         type,
         data: {
@@ -42,10 +42,14 @@ function genConfig({ type, title, yAxeLabel, color }: IProps) {
                     scaleLabel: {
                         display: true,
                         labelString: yAxeLabel,
+                    },
+                    ticks: {
+                        suggestedMin,
+                        suggestedMax,
                     }
                 }]
             }
-        }
+        },
     };
 }
 
@@ -53,6 +57,8 @@ interface IProps {
     type: Type,
     title: string;
     yAxeLabel: string;
+    suggestedMin: number;
+    suggestedMax: number;
     color: Color;
 }
 

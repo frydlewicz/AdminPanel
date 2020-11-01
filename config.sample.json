@@ -5,22 +5,30 @@
         {
             "name": "cpu_usage",
             "title": "CPU usage",
-            "yAxeLabel": "%"
+            "yAxeLabel": "%",
+            "suggestedMin": 0,
+            "suggestedMax": 100
         },
         {
             "name": "cpu_load",
             "title": "CPU load",
-            "yAxeLabel": ""
+            "yAxeLabel": "",
+            "suggestedMin": 0,
+            "suggestedMax": 8
         },
         {
             "name": "temperature",
             "title": "Temperature",
-            "yAxeLabel": "°C"
+            "yAxeLabel": "°C",
+            "suggestedMin": 0,
+            "suggestedMax": 80
         },
         {
             "name": "memory",
             "title": "Memory",
-            "yAxeLabel": "%"
+            "yAxeLabel": "%",
+            "suggestedMin": 0,
+            "suggestedMax": 100
         }
     ]
 }
