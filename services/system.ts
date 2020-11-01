@@ -11,8 +11,8 @@ export function getCPUUsage(): Promise<number> {
     });
 }
 
-export function getCPULoad(): number {
-    return os.loadavg(5);
+export function getCPULoad(): Promise<number> {
+    return Promise.resolve(os.loadavg(5));
 }
 
 export function getTemperature(): Promise<number> {
@@ -20,6 +20,6 @@ export function getTemperature(): Promise<number> {
         .then((data): number => data.main)
 }
 
-export function getMemory(): number {
-    return os.freememPercentage() * 100;
+export function getMemory(): Promise<number> {
+    return Promise.resolve(os.freememPercentage() * 100);
 }
