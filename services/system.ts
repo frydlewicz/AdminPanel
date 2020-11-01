@@ -1,25 +1,27 @@
 import os from 'os-utils';
 import si from 'systeminformation';
 
-import { Resolver } from '../helpers/types';
+import { ICollection, Resolver, Getter } from '../helpers/types';
 
-export function getCPUUsage(): Promise<number> {
+export const getters: ICollection<Getter> = {};
+
+getters.cpu_usage = (): Promise<number> => {
     return new Promise((res: Resolver<number>): void => {
         os.cpuUsage((val: number): void => {
             res(100 * val);
         });
     });
-}
+};
 
-export function getCPULoad(): Promise<number> {
-    return Promise.resolve(os.loadavg(5));
-}
+getters.cpu_load = (): Promise<number> => {
+    return Promise.resolve(os.loadavg(1));
+};
 
-export function getTemperature(): Promise<number> {
+getters.temperature = (): Promise<number> => {
     return si.cpuTemperature()
         .then((data): number => data.main)
 }
 
-export function getMemory(): Promise<number> {
+getters.memory = (): Promise<number> => {
     return Promise.resolve(os.freememPercentage() * 100);
-}
+};

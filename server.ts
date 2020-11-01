@@ -1,36 +1,43 @@
-import { IStatsKind, IStats } from './helpers/types';
-import { statsKinds } from './config.json';
+import { IStatsKind, IStatsQueues, IStats } from './helpers/types';
+import Queue from './helpers/queue';
+import { statsPoints, statsInterval, statsKinds } from './config.json';
 import { setData } from './services/redis';
+import { getters } from './services/system';
 
-function abc(): void {
-    const data: IStats = {};
+const statsQueues: IStatsQueues = {};
+const stats: IStats = {};
 
-    statsKinds.forEach((statsKind: IStatsKind): void => {
-        data[statsKind.name] = [];
+function initStats(): void {
+    statsKinds.forEach((statsKind): void => {
+        const name = statsKind.name;
 
-        [
-            '11:40',
-            '11:50',
-            '12:00',
-            '12:10',
-            '12:20',
-            '12:30',
-            '12:40',
-            '12:50'
-        ].forEach((x: string): void => {
-            data[statsKind.name].push({
-                x,
-                y: Math.random(),
-            });
-        });
+        statsQueues[name] = new Queue(statsPoints, true);
+        stats[name] = [];
     });
-
-    setData('admin-panel_stats', data);
 }
 
+function calcStats(): void {
+    statsKinds.forEach((statsKind: IStatsKind): void => {
+        const name = statsKind.name;
+
+        getters[name]().then((y): void => {
+            const date = new Date();
+            const x = `${date.getHours()}:${date.getMinutes()}`;
+
+            statsQueues[name].push({ x, y });
+            stats[name] = [...statsQueues[name]];
+
+            setData('admin-panel_stats', stats);
+        })
+    });
+}
+
+initStats();
+calcStats();
+
 setInterval((): void => {
-    abc();
-}, 1500);
+    calcStats();
+}, statsInterval);
 
 process.stdin.resume();
 

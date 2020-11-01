@@ -10,6 +10,9 @@ export function getData(key: string): Promise<IObject> {
             if (err) {
                 return rej(err);
             }
+            if (!val) {
+                return res({});
+            }
 
             try {
                 res(JSON.parse(val));

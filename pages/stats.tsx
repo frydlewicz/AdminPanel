@@ -13,7 +13,7 @@ export default class Stats extends React.Component {
 
     public componentDidMount(): void {
         this.update();
-        this.interval = setInterval((): void => this.update(), 1000 * 3);
+        this.interval = setInterval((): void => this.update(), 1000);
     }
 
     public componentWillUnmount(): void {

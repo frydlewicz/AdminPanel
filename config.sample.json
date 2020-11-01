@@ -1,4 +1,6 @@
 {
+    "statsPoints": 20,
+    "statsInterval": 900000,
     "statsKinds": [
         {
             "name": "cpu_usage",

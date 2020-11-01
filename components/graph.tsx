@@ -14,7 +14,7 @@ function genConfig({ type, title, yAxeLabel, color }: IProps) {
                 borderColor: color,
                 data: [],
                 fill: false,
-                pointRadius: 5,
+                pointRadius: 4,
             }],
         },
         options: {
