@@ -35,9 +35,7 @@ function calcStats(): void {
 initStats();
 calcStats();
 
-setInterval((): void => {
-    calcStats();
-}, statsInterval);
+setInterval((): void => calcStats(), statsInterval);
 
 process.stdin.resume();
 

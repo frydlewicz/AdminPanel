@@ -9,7 +9,6 @@
     },
     "scripts": {
         "check": "tslint --fix -c tslint.json -p .",
-        "dev": "npx next dev",
         "build": "tsc && npx next build",
         "server": "node server.js",
         "panel": "npx next start"
