@@ -23,5 +23,6 @@ getters.temperature = (): Promise<number> => {
 }
 
 getters.memory = (): Promise<number> => {
-    return Promise.resolve(os.freememPercentage() * 100);
+    return si.mem()
+        .then((data): number => 100 - 100 * data.available / data.total);
 };

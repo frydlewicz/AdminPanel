@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { ICollection, IStatsKind, IStats } from '../helpers/types';
 import { statsKinds } from '../config.json';
+import { ICollection, IStatsKind, IStats } from '../helpers/types';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/stats.less';

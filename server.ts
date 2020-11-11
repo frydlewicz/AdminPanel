@@ -1,6 +1,7 @@
-import { IStatsKind, IStatsQueues, IStats } from './helpers/types';
-import Queue from './helpers/queue';
 import { statsPoints, statsInterval, statsKinds } from './config.json';
+import { IStatsKind, IStatsQueues, IStats } from './helpers/types';
+import { formatTime } from './helpers/format';
+import Queue from './helpers/queue';
 import { setData } from './services/redis';
 import { getters } from './services/system';
 
@@ -22,7 +23,7 @@ function calcStats(): void {
 
         getters[name]().then((y): void => {
             const date = new Date();
-            const x = `${date.getHours()}:${date.getMinutes()}`;
+            const x = formatTime(date);
 
             statsQueues[name].push({ x, y });
             stats[name] = [...statsQueues[name]];
