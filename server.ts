@@ -1,6 +1,6 @@
 import { statsPoints, statsInterval, statsKinds } from './config.json';
 import { IStatsKind, IStatsQueues, IStats } from './helpers/types';
-import { formatTime } from './helpers/format';
+import { formatTime, formatNumber } from './helpers/format';
 import Queue from './helpers/queue';
 import { setData } from './services/redis';
 import { getters } from './services/system';
@@ -21,9 +21,10 @@ function calcStats(): void {
     statsKinds.forEach((statsKind: IStatsKind): void => {
         const name = statsKind.name;
 
-        getters[name]().then((y): void => {
+        getters[name]().then((result): void => {
             const date = new Date();
             const x = formatTime(date);
+            const y = formatNumber(result);
 
             statsQueues[name].push({ x, y });
             stats[name] = [...statsQueues[name]];

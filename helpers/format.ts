@@ -7,3 +7,7 @@ export function formatTime(date: Date): string {
             : date.getMinutes()
         }`;
 }
+
+export function formatNumber(value: number): number {
+    return Math.round(100 * value) / 100;
+}
