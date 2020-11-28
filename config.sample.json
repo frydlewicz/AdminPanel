@@ -30,5 +30,10 @@
             "suggestedMin": 0,
             "suggestedMax": 100
         }
+    ],
+    "healthPoints": 20,
+    "healthInterval": 900000,
+    "healthWebsites": [
+        "https://frydlewicz.pl"
     ]
 }

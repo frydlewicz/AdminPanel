@@ -1,12 +1,15 @@
 import { statsPoints, statsInterval, statsKinds } from './config.json';
-import { IStatsKind, IStatsQueues, IStats } from './helpers/types';
+import { IStatsKind, IQueueCollection, IPointsCollection } from './helpers/types';
 import { formatTime, formatNumber } from './helpers/format';
 import Queue from './helpers/queue';
 import { setData } from './services/redis';
 import { getters } from './services/system';
 
-const statsQueues: IStatsQueues = {};
-const stats: IStats = {};
+const statsQueues: IQueueCollection = {};
+const stats: IPointsCollection = {};
+
+const healthQueues: IQueueCollection = {};
+const health: IPointsCollection = {};
 
 function initStats(): void {
     statsKinds.forEach((statsKind): void => {

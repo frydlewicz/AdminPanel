@@ -21,8 +21,8 @@ export interface IStatsKind {
     suggestedMax: number;
 }
 
-export type IStatsQueues = ICollection<Queue<IPoint>>;
-export type IStats = ICollection<IPoint[]>;
+export type IQueueCollection = ICollection<Queue<IPoint>>;
+export type IPointsCollection = ICollection<IPoint[]>;
 
 export type Resolver<T> = (data: T) => void;
 export type Rejecter = (err: Error) => void;

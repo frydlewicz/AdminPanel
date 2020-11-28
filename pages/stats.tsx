@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import { statsKinds } from '../config.json';
-import { ICollection, IStatsKind, IStats } from '../helpers/types';
+import { ICollection, IStatsKind, IPointsCollection } from '../helpers/types';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/stats.less';
@@ -24,12 +24,12 @@ export default class Stats extends React.Component {
 
     private update(): void {
         fetch('/api/stats')
-            .then((res: Response): Promise<IStats> => {
+            .then((res: Response): Promise<IPointsCollection> => {
                 if (!res.ok) {
                     throw new Error('Unable to get statistics from API!');
                 }
                 return res.json();
-            }).then((stats: IStats): void => {
+            }).then((stats: IPointsCollection): void => {
                 for (const key of Object.keys(stats)) {
                     this.graphs[key].update(stats[key]);
                 }
