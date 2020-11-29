@@ -21,6 +21,11 @@ export interface IStatsKind {
     suggestedMax: number;
 }
 
+export interface IHealthWebsite {
+    url: string;
+    title: string;
+}
+
 export type IQueueCollection = ICollection<Queue<IPoint>>;
 export type IPointsCollection = ICollection<IPoint[]>;
 

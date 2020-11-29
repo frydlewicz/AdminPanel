@@ -34,6 +34,9 @@
     "healthPoints": 20,
     "healthInterval": 900000,
     "healthWebsites": [
-        "https://frydlewicz.pl"
+        {
+            "url": "https://frydlewicz.pl",
+            "title": "Portfolio"
+        }
     ]
 }
