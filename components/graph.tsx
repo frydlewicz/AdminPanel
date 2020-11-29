@@ -11,6 +11,7 @@ function genConfig({ type, title, yAxeLabel, suggestedMin, suggestedMax, color }
             labels: [],
             datasets: [{
                 backgroundColor: color,
+                borderColor: color,
                 data: [],
                 fill: false,
                 pointRadius: 4,
@@ -132,6 +133,7 @@ export default class Graph extends React.Component<IProps> {
 
         if (color) {
             this.config.data.datasets[0].backgroundColor = color;
+            this.config.data.datasets[0].borderColor = color;
         }
 
         if (this.ready) {
