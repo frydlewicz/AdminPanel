@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import { healthWebsites } from '../config.json';
-import { ICollection, IHealthWebsite, IPointsCollection } from '../helpers/types';
+import { ICollection, IPoint, IHealthWebsite, IPointsCollection } from '../helpers/types';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/health.less';
@@ -17,14 +17,14 @@ export default class Health extends React.Component {
         } else if (status >= 400) {
             return Color.ORANGE;
         } else if (status >= 300) {
-            return Color.BROWN;
+            return Color.VIOLET;
         } else {
             return Color.GREEN;
         }
     }
 
-    private getGraphColors(key: string): Color[] {
-        return this.graphs[key].getPoints().map((point) => Health.getColorByStatus(point.y));
+    public static getColorsByPoints(points: IPoint[]): Color[] {
+        return points.map((point) => Health.getColorByStatus(point.y));
     }
 
     public componentDidMount(): void {
@@ -47,7 +47,7 @@ export default class Health extends React.Component {
                 return res.json();
             }).then((health: IPointsCollection): void => {
                 for (const key of Object.keys(health)) {
-                    this.graphs[key].update(health[key], this.getGraphColors(key));
+                    this.graphs[key].update(health[key], Health.getColorsByPoints(health[key]));
                 }
             }).catch((err: Error): void => console.error(err));
     }

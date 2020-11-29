@@ -121,18 +121,9 @@ export default class Graph extends React.Component<IProps> {
         }
     }
 
-    public getPoints(): IPoint[] {
-        if (!this.points) {
-            return [];
-        }
-        return [...this.points];
-    }
-
     public update(points: IPoint[], color?: Color | Color[]): void {
-        if (!this.ready) {
-            this.points = points;
-            return;
-        }
+        this.points = points;
+
         const xValues = points.map((point: IPoint): string => point.x);
         const yValues = points.map((point: IPoint): number => point.y);
 
@@ -143,7 +134,9 @@ export default class Graph extends React.Component<IProps> {
             this.config.data.datasets[0].backgroundColor = color;
         }
 
-        this.chart.update();
+        if (this.ready) {
+            this.chart.update();
+        }
     }
 
     public render(): React.ReactNode {
