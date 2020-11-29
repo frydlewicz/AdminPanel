@@ -11,6 +11,22 @@ export default class Health extends React.Component {
     private readonly graphs: ICollection<Graph> = {};
     private interval: NodeJS.Timeout;
 
+    public static getColorByStatus(status: number): Color {
+        if (status >= 500) {
+            return Color.RED;
+        } else if (status >= 400) {
+            return Color.ORANGE;
+        } else if (status >= 300) {
+            return Color.BROWN;
+        } else {
+            return Color.GREEN;
+        }
+    }
+
+    private getGraphColors(key: string): Color[] {
+        return this.graphs[key].getPoints().map((point) => Health.getColorByStatus(point.y));
+    }
+
     public componentDidMount(): void {
         this.update();
         this.interval = setInterval((): void => this.update(), 60000);
@@ -31,7 +47,7 @@ export default class Health extends React.Component {
                 return res.json();
             }).then((health: IPointsCollection): void => {
                 for (const key of Object.keys(health)) {
-                    this.graphs[key].update(health[key]);
+                    this.graphs[key].update(health[key], this.getGraphColors(key));
                 }
             }).catch((err: Error): void => console.error(err));
     }
@@ -55,7 +71,7 @@ export default class Health extends React.Component {
                                 yAxeLabel=""
                                 suggestedMin={0}
                                 suggestedMax={500}
-                                color={Color[Object.keys(Color)[i]]}
+                                color={Color.GREEN}
                             ></Graph>
                         </div>
                     ))}

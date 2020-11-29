@@ -11,7 +11,6 @@ function genConfig({ type, title, yAxeLabel, suggestedMin, suggestedMax, color }
             labels: [],
             datasets: [{
                 backgroundColor: color,
-                borderColor: color,
                 data: [],
                 fill: false,
                 pointRadius: 4,
@@ -59,7 +58,7 @@ interface IProps {
     yAxeLabel: string;
     suggestedMin: number;
     suggestedMax: number;
-    color: Color;
+    color: Color | Color[];
 }
 
 export enum Type {
@@ -122,7 +121,14 @@ export default class Graph extends React.Component<IProps> {
         }
     }
 
-    public update(points: IPoint[]): void {
+    public getPoints(): IPoint[] {
+        if (!this.points) {
+            return [];
+        }
+        return [...this.points];
+    }
+
+    public update(points: IPoint[], color?: Color | Color[]): void {
         if (!this.ready) {
             this.points = points;
             return;
@@ -132,6 +138,10 @@ export default class Graph extends React.Component<IProps> {
 
         this.config.data.labels = xValues;
         this.config.data.datasets[0].data = yValues;
+
+        if (color) {
+            this.config.data.datasets[0].backgroundColor = color;
+        }
 
         this.chart.update();
     }
