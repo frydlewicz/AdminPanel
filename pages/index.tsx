@@ -1,9 +1,25 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.less';
 
 export default function Home() {
     return (
         <div className={styles.container}>
+            <nav>
+                <div className={styles.top}></div>
+                <ul>
+                    <li>
+                        <Link href="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link href="/health">Health check</Link>
+                    </li>
+                    <li>
+                        <Link href="/stats">Statistics</Link>
+                    </li>
+                </ul>
+            </nav>
+
             <Head>
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -11,12 +27,11 @@ export default function Home() {
 
             <main className={styles.main}>
                 <h1 className={styles.title}>
-                    Welcome to <a href="https://nextjs.org">Next.js!</a>
+                    AdminPanel
                 </h1>
 
                 <p className={styles.description}>
-                    Get started by editing{' '}
-                    <code className={styles.code}>pages/index.js</code>
+                    server performance metrics
                 </p>
 
                 <div className={styles.grid}>
