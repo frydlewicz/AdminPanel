@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { statsKinds } from '../config.json';
 import { ICollection, IStatsKind, IPointsCollection } from '../helpers/types';
+import Navbar from '../components/navbar';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/stats.less';
@@ -38,7 +39,8 @@ export default class Stats extends React.Component {
 
     public render(): React.ReactNode {
         return (
-            <React.Fragment>
+            <div className={styles.container}>
+                <Navbar></Navbar>
                 <Head>
                     <title>ADMIN | Statistics</title>
                 </Head>
@@ -60,7 +62,7 @@ export default class Stats extends React.Component {
                         </div>
                     ))}
                 </main>
-            </React.Fragment>
+            </div>
         );
     }
 }

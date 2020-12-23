@@ -1,0 +1,32 @@
+@import './variables.less';
+
+nav {
+    border-bottom: 1px solid @borderColor;
+
+    .top {
+        height: 0.5rem;
+        background: linear-gradient(to right, @secondaryColor, @primaryColor);
+    }
+
+    ul {
+        padding: 0.5rem 0;
+        text-align: center;
+
+        li {
+            display: inline-block;
+
+            a {
+                display: inline-block;
+                padding: 0.5rem 0.8rem;
+                border: 1px solid transparent;
+                border-radius: @borderRadius;
+                font-size: 1.4rem;
+
+                &:hover {
+                    border-color: @primaryColor;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
