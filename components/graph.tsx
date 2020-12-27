@@ -10,8 +10,12 @@ function genConfig({ type, title, yAxeLabel, suggestedMin, suggestedMax, color }
         data: {
             labels: [],
             datasets: [{
-                backgroundColor: color,
+                backgroundColor:
+                    (typeof color === 'object')
+                        ? color.map((color: Color): string => color + '80')
+                        : color,
                 borderColor: color,
+                borderWidth: 1,
                 data: [],
                 fill: false,
                 pointRadius: 4,
@@ -132,7 +136,10 @@ export default class Graph extends React.Component<IProps> {
         this.config.data.datasets[0].data = yValues;
 
         if (color) {
-            this.config.data.datasets[0].backgroundColor = color;
+            this.config.data.datasets[0].backgroundColor =
+                (typeof color === 'object')
+                    ? color.map((color: Color): string => color + '80')
+                    : color;
             this.config.data.datasets[0].borderColor = color;
         }
 

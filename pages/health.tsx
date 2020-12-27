@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { healthWebsites } from '../config.json';
 import { ICollection, IPoint, IHealthWebsite, IPointsCollection } from '../helpers/types';
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/health.less';
@@ -55,7 +56,7 @@ export default class Health extends React.Component {
 
     public render(): React.ReactNode {
         return (
-            <React.Fragment>
+            <div className={styles.container}>
                 <Navbar></Navbar>
                 <Head>
                     <title>ADMIN | Statistics</title>
@@ -78,7 +79,8 @@ export default class Health extends React.Component {
                         </div>
                     ))}
                 </main>
-            </React.Fragment>
+                <Footer></Footer>
+            </div>
         );
     }
 }

@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { statsKinds } from '../config.json';
 import { ICollection, IStatsKind, IPointsCollection } from '../helpers/types';
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/stats.less';
@@ -62,6 +63,7 @@ export default class Stats extends React.Component {
                         </div>
                     ))}
                 </main>
+                <Footer></Footer>
             </div>
         );
     }
