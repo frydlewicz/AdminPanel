@@ -74,6 +74,7 @@ export default class Health extends React.Component {
                                 yAxeLabel=""
                                 suggestedMin={0}
                                 suggestedMax={500}
+                                stepSize={100}
                                 color={Color.GREEN}
                             ></Graph>
                         </div>
