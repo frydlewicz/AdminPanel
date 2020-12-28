@@ -41,7 +41,7 @@ export default class Stats extends React.Component {
     public render(): React.ReactNode {
         return (
             <div className={styles.container}>
-                <Navbar></Navbar>
+                <Navbar />
                 <Head>
                     <title>ADMIN | Statistics</title>
                 </Head>
@@ -63,7 +63,7 @@ export default class Stats extends React.Component {
                         </div>
                     ))}
                 </main>
-                <Footer></Footer>
+                <Footer />
             </div>
         );
     }

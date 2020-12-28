@@ -8,7 +8,7 @@ import styles from '../styles/index.less';
 export default function Home() {
     return (
         <div className={styles.container}>
-            <Navbar></Navbar>
+            <Navbar />
             <Head>
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -22,7 +22,7 @@ export default function Home() {
                     server performance metrics
                 </p>
             </main>
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 }
