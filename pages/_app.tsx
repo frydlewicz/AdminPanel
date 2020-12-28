@@ -1,5 +1,5 @@
 import '../styles/globals.less';
 
-export default function MyApp({ Component, pageProps }) {
+export default function AdminPanel({ Component, pageProps }) {
     return <Component {...pageProps} />;
 }
