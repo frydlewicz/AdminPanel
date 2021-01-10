@@ -34,6 +34,7 @@ function genConfig({ type, title, yAxeLabel, suggestedMin, suggestedMax, stepSiz
                 mode: 'index',
                 intersect: false,
             },
+            animation: null,
             scales: {
                 xAxes: [{
                     display: true,
