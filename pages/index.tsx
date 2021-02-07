@@ -7,7 +7,7 @@ import styles from '../styles/index.less';
 
 export default function Home() {
     return (
-        <div className={styles.container}>
+        <div>
             <Navbar />
             <Head>
                 <title>Create Next App</title>

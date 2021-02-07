@@ -7,7 +7,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Graph, { Type, Color } from '../components/graph';
 
-import styles from '../styles/health.less';
+import styles from '../styles/graph.less';
 
 export default class Health extends React.Component {
     private readonly graphs: ICollection<Graph> = {};
@@ -56,7 +56,7 @@ export default class Health extends React.Component {
 
     public render(): React.ReactNode {
         return (
-            <div className={styles.container}>
+            <div>
                 <Navbar />
                 <Head>
                     <title>ADMIN | Statistics</title>
