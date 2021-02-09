@@ -10,13 +10,28 @@ export default class Navbar extends React.Component {
                 <div className={styles.top}></div>
                 <ul>
                     <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/">
+                            <a>
+                                <img src="/home.svg" alt="" />
+                                <span>Home</span>
+                            </a>
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/health">Health check</Link>
+                        <Link href="/health">
+                            <a>
+                                <img src="/health.svg" alt="" />
+                                <span>Health check</span>
+                            </a>
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/stats">Statistics</Link>
+                        <Link href="/stats">
+                            <a>
+                                <img src="/stats.svg" alt="" />
+                                <span>Statistics</span>
+                            </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

@@ -17,7 +17,7 @@ nav {
 
             a {
                 display: inline-block;
-                padding: 0.5rem 0.8rem;
+                position: relative;
                 border: 1px solid transparent;
                 border-radius: @borderRadius;
                 font-size: 1.4rem;
@@ -25,6 +25,28 @@ nav {
                 &:hover {
                     border-color: @primaryColor;
                     text-decoration: none;
+                }
+
+                img {
+                    height: 2.2rem;
+                }
+
+                @media (max-width: 699px) {
+                    padding: 0.3rem 0.4rem 0 0.4rem;
+
+                    span {
+                        display: none;
+                    }
+                }
+
+                @media (min-width: 700px) {
+                    padding: 0.5rem 0.8rem 0.5rem 2.8rem;
+
+                    img {
+                        position: absolute;
+                        left: 0.5rem;
+                        top: 0.3rem;
+                    }
                 }
             }
         }
