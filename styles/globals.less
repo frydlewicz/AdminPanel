@@ -18,7 +18,14 @@ body {
 
 main {
     display: flex;
-    min-height: calc(100vh - 53px - 4.1rem);
+
+    @media (max-width: 699px) {
+        min-height: calc(100vh - 53px - 3.7rem);
+    }
+
+    @media (min-width: 700px) {
+        min-height: calc(100vh - 53px - 3.6rem);
+    }
 }
 
 a {

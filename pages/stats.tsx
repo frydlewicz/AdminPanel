@@ -58,6 +58,7 @@ export default class Stats extends React.Component {
                                 yAxeLabel={statsKind.yAxeLabel}
                                 suggestedMin={statsKind.suggestedMin}
                                 suggestedMax={statsKind.suggestedMax}
+                                stepSize={statsKind.stepSize}
                                 color={Color[Object.keys(Color)[i]]}
                             ></Graph>
                         </div>

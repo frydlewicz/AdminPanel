@@ -19,6 +19,7 @@ export interface IStatsKind {
     yAxeLabel: string;
     suggestedMin: number;
     suggestedMax: number;
+    stepSize: number;
 }
 
 export interface IHealthWebsite {

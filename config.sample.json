@@ -7,28 +7,32 @@
             "title": "CPU usage",
             "yAxeLabel": "%",
             "suggestedMin": 0,
-            "suggestedMax": 100
+            "suggestedMax": 100,
+            "stepSize": 20
         },
         {
             "name": "cpu_load",
             "title": "CPU load",
             "yAxeLabel": "",
             "suggestedMin": 0,
-            "suggestedMax": 8
+            "suggestedMax": 8,
+            "stepSize": 1
         },
         {
             "name": "temperature",
             "title": "Temperature",
             "yAxeLabel": "°C",
             "suggestedMin": 0,
-            "suggestedMax": 80
+            "suggestedMax": 80,
+            "stepSize": 20
         },
         {
             "name": "memory",
             "title": "Memory",
             "yAxeLabel": "%",
             "suggestedMin": 0,
-            "suggestedMax": 100
+            "suggestedMax": 100,
+            "stepSize": 20
         }
     ],
     "healthPoints": 20,
