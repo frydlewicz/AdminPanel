@@ -17,6 +17,7 @@
         "@zeit/next-less": "^1.0.1",
         "less": "^3.12.2",
         "next": "^10.0.0",
+        "nextjs-basic-auth-middleware": "^0.2.0",
         "node-fetch": "^2.6.1",
         "os-utils": "0.0.14",
         "react": "^16.13.1",
