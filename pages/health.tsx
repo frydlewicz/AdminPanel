@@ -1,13 +1,19 @@
 import React from 'react';
+import { NextPageContext } from 'next';
 import Head from 'next/head';
 
 import { healthWebsites } from '../config.json';
 import { ICollection, IPoint, IHealthWebsite, IPointsCollection } from '../helpers/types';
+import { authMiddleware } from '../services/auth';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Graph, { Type, Color } from '../components/graph';
 
 import styles from '../styles/graph.less';
+
+export function getServerSideProps(ctx: NextPageContext) {
+    return authMiddleware(ctx);
+}
 
 export default class Health extends React.Component {
     private readonly graphs: ICollection<Graph> = {};

@@ -1,14 +1,17 @@
 import { NextPageContext } from 'next';
 import Head from 'next/head';
-import basicAuthMiddleware from 'nextjs-basic-auth-middleware';
 
+import { authMiddleware } from '../services/auth';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
 import styles from '../styles/index.less';
 
+export function getServerSideProps(ctx: NextPageContext) {
+    return authMiddleware(ctx);
+}
 
-function Home() {
+export default function Home() {
     return (
         <div>
             <Navbar />
@@ -29,18 +32,3 @@ function Home() {
         </div>
     );
 }
-
-export async function getServerSideProps(ctx: NextPageContext) {
-    await basicAuthMiddleware(ctx.req, ctx.res, {
-        users: [
-            {
-                name: 'admin',
-                password: 'admin',
-            },
-        ],
-    });
-
-    return {};
-}
-
-export default Home;

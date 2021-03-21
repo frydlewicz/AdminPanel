@@ -1,7 +1,12 @@
-import { NextApiResponse } from 'next';
+import { NextPageContext, NextApiResponse } from 'next';
 
 import { IPointsCollection } from '../../helpers/types';
+import { authMiddleware } from '../../services/auth';
 import { getData } from '../../services/redis';
+
+export function getServerSideProps(ctx: NextPageContext) {
+    return authMiddleware(ctx);
+}
 
 export default function handler(_, res: NextApiResponse): void {
     getData('admin-panel_health')
