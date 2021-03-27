@@ -10,8 +10,7 @@ export default function Home() {
         <div>
             <Navbar />
             <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
+                <title>ADMIN PANEL</title>
             </Head>
             <main className={styles.main}>
                 <h1 className={styles.title}>
