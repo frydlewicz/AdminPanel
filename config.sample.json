@@ -1,4 +1,18 @@
 {
+    "users": [
+        {
+            "name": "admin",
+            "password": "admin"
+        }
+    ],
+    "healthPoints": 20,
+    "healthInterval": 900000,
+    "healthWebsites": [
+        {
+            "url": "https://frydlewicz.pl",
+            "title": "Portfolio"
+        }
+    ],
     "statsPoints": 20,
     "statsInterval": 900000,
     "statsKinds": [
@@ -33,14 +47,6 @@
             "suggestedMin": 0,
             "suggestedMax": 100,
             "stepSize": 20
-        }
-    ],
-    "healthPoints": 20,
-    "healthInterval": 900000,
-    "healthWebsites": [
-        {
-            "url": "https://frydlewicz.pl",
-            "title": "Portfolio"
         }
     ]
 }
