@@ -50,6 +50,7 @@ export default class Stats extends React.Component {
                 <Navbar />
                 <Head>
                     <title>ADMIN | Statistics</title>
+                    <link rel="icon" href="https://frydlewicz.pl/favicon.ico" />
                 </Head>
                 <main className={styles.main}>
                     {statsKinds.map((statsKind: IStatsKind, i: number) => (

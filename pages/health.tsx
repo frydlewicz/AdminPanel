@@ -66,6 +66,7 @@ export default class Health extends React.Component {
                 <Navbar />
                 <Head>
                     <title>ADMIN | Health check</title>
+                    <link rel="icon" href="https://frydlewicz.pl/favicon.ico" />
                 </Head>
                 <main className={styles.main}>
                     {healthWebsites.map((healthWebsite: IHealthWebsite, i: number) => (

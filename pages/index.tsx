@@ -17,6 +17,7 @@ export default function Home() {
             <Navbar />
             <Head>
                 <title>ADMIN PANEL</title>
+                <link rel="icon" href="https://frydlewicz.pl/favicon.ico" />
             </Head>
             <main className={styles.main}>
                 <h1 className={styles.title}>
