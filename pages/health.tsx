@@ -65,7 +65,7 @@ export default class Health extends React.Component {
             <div>
                 <Navbar />
                 <Head>
-                    <title>ADMIN | Statistics</title>
+                    <title>ADMIN | Health check</title>
                 </Head>
                 <main className={styles.main}>
                     {healthWebsites.map((healthWebsite: IHealthWebsite, i: number) => (
