@@ -1,8 +1,10 @@
 const withLess = require('@zeit/next-less');
 
 module.exports = withLess({
-    cssModules: true,
+    generateEtags: false,
     cssLoaderOptions: {
         importLoaders: true,
     },
+    cssModules: true,
+    poweredByHeader: false,
 });
