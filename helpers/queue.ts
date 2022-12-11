@@ -7,7 +7,7 @@ export default class Queue<T> {
     private toProduce!: number;
     private toConsume!: number;
 
-    constructor(maxSize: number, loop: boolean = false) {
+    constructor(maxSize: number, loop = false) {
         if (!Number.isInteger(maxSize) || maxSize < 1) {
             throw new Error('Invalid parameter');
         }

@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 
-import styles from '../styles/navbar.less';
+import styles from '../styles/navbar.module.less';
 
 export default class Navbar extends React.Component {
     public render(): React.ReactNode {
         return (
-            <nav>
+            <nav className={styles.nav}>
                 <div className={styles.top}></div>
                 <ul>
                     <li>

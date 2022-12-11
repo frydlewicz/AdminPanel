@@ -1,6 +1,7 @@
 import Queue from './queue';
 
 export interface IObject {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     [key: string]: any;
 }
 

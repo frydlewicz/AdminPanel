@@ -16,11 +16,13 @@
         "allowJs": true,
         "skipLibCheck": true,
         "noEmit": false,
-        "strict": false
+        "strict": false,
+        "incremental": true
     },
     "include": [
         "**/*.ts",
-        "**/*.tsx"
+        "**/*.tsx",
+        "externals.d.ts"
     ],
     "exclude": [
         "node_modules"

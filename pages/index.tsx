@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
-import styles from '../styles/index.less';
+import styles from '../styles/index.module.less';
 
 export default function Home() {
     return (

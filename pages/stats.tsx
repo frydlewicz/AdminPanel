@@ -1,13 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { statsKinds } from '../config.json';
+import config from '../config.json';
 import { ICollection, IStatsKind, IPointsCollection } from '../helpers/types';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Graph, { Type, Color } from '../components/graph';
 
-import styles from '../styles/graph.less';
+import styles from '../styles/graph.module.less';
 
 export default class Stats extends React.Component {
     private readonly graphs: ICollection<Graph> = {};
@@ -46,7 +46,7 @@ export default class Stats extends React.Component {
                     <title>ADMIN | Statistics</title>
                 </Head>
                 <main className={styles.main}>
-                    {statsKinds.map((statsKind: IStatsKind, i: number) => (
+                    {config.statsKinds.map((statsKind: IStatsKind, i: number) => (
                         <div
                             key={i}
                             className={styles.graph}

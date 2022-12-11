@@ -1,4 +1,4 @@
-import { statsPoints, statsInterval, statsKinds, healthPoints, healthInterval, healthWebsites } from './config.json';
+import config from './config.json';
 import { IQueueCollection, IPointsCollection } from './helpers/types';
 import { formatTime, formatNumber } from './helpers/format';
 import Queue from './helpers/queue';
@@ -13,23 +13,23 @@ const healthQueues: IQueueCollection = {};
 const health: IPointsCollection = {};
 
 function init(): void {
-    statsKinds.forEach((statsKind): void => {
+    config.statsKinds.forEach((statsKind): void => {
         const name = statsKind.name;
 
-        statsQueues[name] = new Queue(statsPoints, true);
+        statsQueues[name] = new Queue(config.statsPoints, true);
         stats[name] = [];
     });
 
-    healthWebsites.forEach((healthWebsite): void => {
+    config.healthWebsites.forEach((healthWebsite): void => {
         const url = healthWebsite.url;
 
-        healthQueues[url] = new Queue(healthPoints, true);
+        healthQueues[url] = new Queue(config.healthPoints, true);
         health[url] = [];
     });
 }
 
 function calcStats(): void {
-    statsKinds.forEach((statsKind): void => {
+    config.statsKinds.forEach((statsKind): void => {
         const name = statsKind.name;
 
         getters[name]().then((result): void => {
@@ -46,7 +46,7 @@ function calcStats(): void {
 }
 
 function calcHealth(): void {
-    healthWebsites.forEach((healthWebsite): void => {
+    config.healthWebsites.forEach((healthWebsite): void => {
         const url = healthWebsite.url;
 
         fetchAndGetStatus(url).then((y) => {
@@ -65,8 +65,8 @@ init();
 calcStats();
 calcHealth();
 
-setInterval((): void => calcStats(), statsInterval);
-setInterval((): void => calcHealth(), healthInterval);
+setInterval((): void => calcStats(), config.statsInterval);
+setInterval((): void => calcHealth(), config.healthInterval);
 
 process.stdin.resume();
 
