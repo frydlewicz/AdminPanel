@@ -1,13 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { healthWebsites } from '../config.json';
+import config from '../config.json';
 import { ICollection, IPoint, IHealthWebsite, IPointsCollection } from '../helpers/types';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Graph, { Type, Color } from '../components/graph';
 
-import styles from '../styles/graph.less';
+import styles from '../styles/graph.module.less';
 
 export default class Health extends React.Component {
     private readonly graphs: ICollection<Graph> = {};
@@ -62,7 +62,7 @@ export default class Health extends React.Component {
                     <title>ADMIN | Health check</title>
                 </Head>
                 <main className={styles.main}>
-                    {healthWebsites.map((healthWebsite: IHealthWebsite, i: number) => (
+                    {config.healthWebsites.map((healthWebsite: IHealthWebsite, i: number) => (
                         <div
                             key={i}
                             className={styles.graph}

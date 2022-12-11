@@ -89,7 +89,7 @@ export default class Graph extends React.Component<IProps> {
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
     private chart: typeof Chart;
-    private ready: boolean = false;
+    private ready = false;
     private points: IPoint[] = null;
 
     constructor(props: IProps) {

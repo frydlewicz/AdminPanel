@@ -1,4 +1,4 @@
-@import './variables.less';
+@import './_variables.less';
 
 .main {
     flex-direction: column;
@@ -8,11 +8,11 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-image: url(/back.webp);
+    background-image: url(../public/back.webp);
 
     .title {
         background: transparent linear-gradient(to right, @primaryColor, @secondaryColor) 0% 0% no-repeat padding-box;
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         color: @primaryColor;
         text-align: center;
