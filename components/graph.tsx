@@ -60,6 +60,7 @@ function genConfig({ type, title, yAxeLabel, suggestedMin, suggestedMax, stepSiz
 }
 
 interface IProps {
+    ref: unknown;
     type: Type,
     title: string;
     yAxeLabel: string;
