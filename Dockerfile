@@ -14,4 +14,4 @@ RUN npm run build
 ARG port
 ENV PORT ${port}
 
-CMD npm run start
+CMD npm run ${runner}

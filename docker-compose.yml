@@ -11,6 +11,7 @@ services:
     build:
       args:
         port: 4021
+        runner: admin
       context: .
     container_name: admin-server-${TAG}
     environment:
@@ -22,6 +23,7 @@ services:
     build:
       args:
         port: 4022
+        runner: panel
       context: .
     container_name: admin-panel-${TAG}
     environment:
