@@ -1,0 +1,31 @@
+services:
+  redis:
+    container_name: admin-redis
+    environment:
+      - TZ=Europe/Warsaw
+    image: redis:7
+    ports:
+      - 4020:6379
+    restart: always
+  admin-server:
+    build:
+      args:
+        port: 4021
+      context: .
+    container_name: admin-server-${TAG}
+    environment:
+      - TZ=Europe/Warsaw
+    image: admin-server:${TAG}
+    network_mode: host
+    restart: always
+  admin-panel:
+    build:
+      args:
+        port: 4022
+      context: .
+    container_name: admin-panel-${TAG}
+    environment:
+      - TZ=Europe/Warsaw
+    image: admin-panel:${TAG}
+    network_mode: host
+    restart: always
