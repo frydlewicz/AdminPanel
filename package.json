@@ -11,9 +11,12 @@
         "check": "eslint --fix .",
         "build": "tsc && npx next build",
         "server": "node server.js",
-        "panel": "npx next start"
+        "panel": "npx next start",
+        "watch-server": "nodemon -e ts,json -x \"npm run build && npm run server\"",
+        "watch-panel": "nodemon -e ts,tsx,less -x \"npm run build && npm run panel\""
     },
     "dependencies": {
+        "crypto-js": "4.1.1",
         "less": "4.1.3",
         "next": "13.0.6",
         "next-with-less": "2.0.5",
@@ -25,6 +28,7 @@
         "systeminformation": "5.16.5"
     },
     "devDependencies": {
+        "@types/crypto-js": "4.1.1",
         "@types/less": "3.0.3",
         "@types/node": "18.11.9",
         "@types/node-fetch": "2.6.2",
@@ -35,6 +39,7 @@
         "@typescript-eslint/eslint-plugin": "5.42.1",
         "@typescript-eslint/parser": "5.42.1",
         "eslint": "8.27.0",
+        "nodemon": "2.0.20",
         "typescript": "4.8.4",
         "webpack": "5.75.0"
     }
