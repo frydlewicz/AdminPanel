@@ -9,9 +9,7 @@ export default function Home() {
     return (
         <div>
             <Navbar />
-            <Head>
-                <title>ADMIN PANEL</title>
-            </Head>
+            <Head children={[<title>ADMIN PANEL</title>]} />
             <main className={styles.main}>
                 <h1 className={styles.title}>
                     AdminPanel

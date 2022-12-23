@@ -58,9 +58,7 @@ export default class Health extends React.Component {
         return (
             <div>
                 <Navbar />
-                <Head>
-                    <title>ADMIN | Health check</title>
-                </Head>
+                <Head children={[<title>ADMIN | Health check</title>]} />
                 <main className={styles.main}>
                     {config.healthWebsites.map((healthWebsite: IHealthWebsite, i: number) => (
                         <div

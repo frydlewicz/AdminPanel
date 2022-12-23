@@ -42,9 +42,7 @@ export default class Stats extends React.Component {
         return (
             <div>
                 <Navbar />
-                <Head>
-                    <title>ADMIN | Statistics</title>
-                </Head>
+                <Head children={[<title>ADMIN | Statistics</title>]} />
                 <main className={styles.main}>
                     {config.statsKinds.map((statsKind: IStatsKind, i: number) => (
                         <div
